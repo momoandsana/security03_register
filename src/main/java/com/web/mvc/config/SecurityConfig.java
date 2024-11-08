@@ -34,6 +34,10 @@ public class SecurityConfig{
                 그래서 여기에서 disable 한다
                 */
                 .formLogin((auth)->auth.disable())
+                /*
+                스프링이 제공하는 폼을 안 쓴다, UsernamePasswordAuthenticatorFilter 을 직접 커스텀해서
+                사용해야 한다
+                */
                 .httpBasic((auth)->auth.disable());
         /*
         http 기본 인증은 사용자 자격 증명을 매번 클라이언트에 보낼 때 암호화되지 않은 형태로
@@ -46,5 +50,10 @@ public class SecurityConfig{
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated());
         return http.build();
+        /*
+        /members/* 는 하나의 세그먼트만 가능->/members/1 같이
+        /members/** 는 하나 이상도 가능-> /members/1/details
+         */
+
     }
 }

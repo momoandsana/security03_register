@@ -10,9 +10,9 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     Member duplicateCheck(String id);
 
     /*
-    existsById 나 findById 는 이미 기본 제공 함수임. 사실 밑에 코드 없어도 된다
+    jpa 는 pk를 기반으로 기본 함수를 제공하기 때문에 함수를 따로 만든다
      */
-    Boolean existsById(String id);
+    Boolean existsById(String id);// member 의 id는 pk가 아님
 
     Member findById(String id);
 }

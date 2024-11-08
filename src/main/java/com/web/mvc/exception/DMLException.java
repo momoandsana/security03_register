@@ -5,6 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class MemberAuthenticationException extends  RuntimeException{
+public class DMLException extends  RuntimeException{
     private final ErrorCode errorCode;
 }

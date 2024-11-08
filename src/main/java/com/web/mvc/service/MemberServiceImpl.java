@@ -1,6 +1,9 @@
 package com.web.mvc.service;
 
 import com.web.mvc.domain.Member;
+import com.web.mvc.exception.ErrorCode;
+
+import com.web.mvc.exception.MemberAuthenticationException;
 import com.web.mvc.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
     public void signUp(Member member) {
         if(memberRepository.existsById(member.getId()))
         {
-//            throw new MemberAuthenticationException(ErrorCode.DUPLICATED);
+            throw new MemberAuthenticationException(ErrorCode.DUPLICATED);
         }
         member.setPwd(passwordEncoder.encode(member.getPwd()));
         member.setRole("ROLE_USER");
