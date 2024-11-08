@@ -26,6 +26,9 @@ public class MemberController {
     public String duplicateIdCheck(@PathVariable String id){
         log.info("id {}", id);
         return memberService.duplicateCheck(id);
+        /*
+        중복 or 사용가능 이 화면에 나옴
+         */
     }
 
     /*
