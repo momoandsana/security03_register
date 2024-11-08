@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
     public void signUp(Member member) {
         if(memberRepository.existsById(member.getId()))
         {
-//            throw new MemberAuthenticationException("아이디가 중복입니다","Duplicate Id");
+//            throw new MemberAuthenticationException(ErrorCode.DUPLICATED);
         }
         member.setPwd(passwordEncoder.encode(member.getPwd()));
         member.setRole("ROLE_USER");
